@@ -4,9 +4,9 @@ I use this for every new Express project.
 
 ## Checkout
 
-  mkdir yourappname
-  cd yourappname
-  git clone https://github.com/vjpr/express-bootstrap.git .
+  git clone https://github.com/vjpr/live-bootstrap.git yourappname
+  git submodule init
+  git submodule update
 
 If using IntelliJ, `File > Open...` and select `yourappname` dir you just created.
 
@@ -22,12 +22,37 @@ Add `yourappname` folder as a monitored folder in LiveReload. Exclude the `app` 
 ## Setup
 
     heroku apps:create yourappname
-    heroku addons:add mongolab:starter
     heroku addons:add redistogo:nano
     heroku config:add NODE_ENV=production
     heroku config:add NODE_PATH='lib:app'
 
 See https://devcenter.heroku.com/articles/nodejs for more.
+
+## Database
+
+### Mongoose with Mongo
+
+Install MongoDB on your local machine. I recommend using `brew install mongodb`.
+
+    heroku addons:add mongolab:starter
+
+### Sequelize with Postgres 9.2
+
+Install Postgres. I recommend [Postgres.app](http://postgresapp.com/) for OSX.
+
+Create a Postgres dev database and a test database. You may need to create a `postgres` superadmin.
+
+Update `config/database.coffee` with the details of your databases.
+
+Setup Heroku for Postgres:
+
+    heroku addons:add heroku-postgresql:dev --version=9.2
+
+## Domain
+
+    heroku domains:add www.yourappname.com
+
+See https://devcenter.heroku.com/articles/custom-domains for more.
 
 ### If you want Facebook Authentication
 
@@ -50,7 +75,7 @@ Modify `appName` in `app/common/config.coffee` to your Heroku app name.
 
 Modify `deployUrl` in `app/common/config.coffee` to your production app domain.
 
-Modify `name` in `package.json`.
+Modify `name` in `package.json` and `component.json`.
 
 Install with `npm install`, then run `make`.
 
@@ -133,3 +158,4 @@ when deployed remotely.
 
 - EC2 deploy using Chef.
 - LiveReload built in.
+- Configuration script to automate modifications of config and setup Heroku environment.

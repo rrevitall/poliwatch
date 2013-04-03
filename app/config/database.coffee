@@ -15,8 +15,10 @@ parseHerokuPostgresConnectionString = (herokuUrl) ->
 
 module.exports = (config) ->
 
-  postgresProd = if process.env.HEROKU_POSTGRESQL_MAROON_URL?
-    parseHerokuPostgresConnectionString process.env.HEROKU_POSTGRESQL_MAROON_URL
+  herokuPostgresUrl = process.env.HEROKU_POSTGRESQL_COPPER_URL
+
+  postgresProd = if herokuPostgresUrl?
+    parseHerokuPostgresConnectionString herokuPostgresUrl
   else
     {}
 
@@ -43,12 +45,12 @@ module.exports = (config) ->
     development:
       name: 'expressbootstrap'
       dialect: 'postgres'
-      username: null
+      username: 'postgres'
       password: null
     test:
       name: 'expressbootstrap-test'
       dialect: 'postgres'
-      username: null
+      username: 'postgres'
       password: null
     production:
       name: postgresProd.name
