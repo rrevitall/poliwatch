@@ -8,7 +8,6 @@
     "jade": "*",
     "coffee-script": "*",
     "mongoose": ">= 3.4.0",
-    "connect-assets": "*",
     "underscore": "*",
     "stylus": "*",
     "less": "*",

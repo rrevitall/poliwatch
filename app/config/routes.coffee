@@ -9,6 +9,6 @@ ensureAuthenticated = (req, res, next) ->
 module.exports = ->
 
   @get '/', require(controller 'appController').index
-  @get '/app', ensureAuthenticated, require(controller 'appController').app
+  @get '/app*', ensureAuthenticated, require(controller 'appController').app
   @get '/admin', require(controller 'adminController').index
   @get '/test', require(controller 'testController').allTests

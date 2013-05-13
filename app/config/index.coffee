@@ -8,7 +8,7 @@ config = null
 module.exports = (env, force = false, _config) ->
   unless force
     return config if config?
-  {getConfig} = require 'framework/config'
+  {getConfig} = require 'live/config'
   config = getConfig env
   # TODO: Developer can modify config settings here.
   config

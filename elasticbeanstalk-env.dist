@@ -1,0 +1,12 @@
+option_settings:
+  - namespace: aws:elasticbeanstalk:container:nodejs:staticfiles
+    option_name: /public
+    value: /public
+  - option_name: NODE_ENV
+    value: production
+  - option_name: DATABASE_URL
+    value: postgres://snmfebvaszddzd:l8rdEUI8i4JKOyYzcRonqAKrfz@ec2-54-225-69-193.compute-1.amazonaws.com:5432/d8donfpv5guqi2
+  - option_name: NODE_PATH
+    value: lib:app
+  - options_name: REDISTOGO_URL
+    value: redis://redistogo:2b4a9c03fb16502f9935a66ffda20091@squawfish.redistogo.com:9060/

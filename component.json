@@ -2,11 +2,11 @@
   "name": "live-bootstrap",
   "version": "0.0.1",
   "dependencies": {
-    "jquery": "~1.8.3",
-    "bootstrap": "~2.2.2",
-    "backbone": "~0.1.0",
-    "underscore": "~1.4.3",
-    "mocha": "~1.8.1",
-    "backbone.marionette": "~1.0.2"
+    "jquery": "~1.9.1",
+    "bootstrap": "*",
+    "backbone": "*",
+    "underscore": "*",
+    "mocha": "*",
+    "backbone.marionette": "*"
   }
 }
