@@ -2,23 +2,18 @@ extend layout
 block main
   .navbar.homepage-navbar
     .navbar-inner
-      .container
-        .brand: a(href='#'): +logo
-        ul.nav.pull-right(style='padding-right: 20px')
-          if user
-            li
-              a(href='/app')= user.name
-          else
-            li: a(href='/app') Login
-  .hero-unit.text-center
-    br
-    h1 Live Bootstrap
-    .lead It's great!
-    br
-    .control-group.large
-      input.span4(type='text', placeholder='Email')
-      div(style='display: inline-block; width: 10px')
-      .btn.btn-large.btn-default Sign Up
-  .container
-    .row
-      .offset2.span8
+      .container: .row
+        .brand: a(href='#'): +logo(title)
+        ul.nav
+          li: a(href='app/divisions') Divisions
+          li: a(href='app/mps') MPs
+          li: a(href='app/senators') Senators
+          li: a(href='app/policies') Policies
+          li: a(href='app/help') Help / FAQ
+
+  #main
+    .hero-unit.text-center
+      br
+      h1 See how your representitives vote
+      .lead Vote vote vote
+

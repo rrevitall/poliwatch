@@ -9,6 +9,8 @@ ensureAuthenticated = (req, res, next) ->
 module.exports = ->
 
   @get '/', require(controller 'appController').index
-  @get '/app*', ensureAuthenticated, require(controller 'appController').app
+  @get '/app*', require(controller 'appController').app
   @get '/admin', require(controller 'adminController').index
   @get '/test', require(controller 'testController').allTests
+  @app.resource 'divisions', require(controller 'divisions').Divisions
+  @app.resource 'bills', require(controller 'bills').Bills

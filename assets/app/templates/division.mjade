@@ -1,0 +1,207 @@
+#division
+  section.meta.header
+    .title
+    .body
+      .bill-title= minorTitle
+      .date= moment(date).format('LLLL')
+
+  //section.tabs
+  //  br
+  //  .title &nbsp;
+  //  .body
+  //    ul.nav.nav-tabs
+  //      li.active: a(href='#') View Amended Act
+  //      li: a(href='#') View Changes
+  //      li: a(href='#') Discuss
+  //      li: a(href='#') Vote
+  //      .js-bill
+
+  section.meta
+    .title Bills
+    .body
+      each bill in bills
+        a(href='#')= bill.title
+        //.js-bill!= bill.markdownHtml
+
+  //section.meta
+  //  .title Diff
+  //  .body
+
+  section.meta
+    .title Votes
+    .body
+      if ayes
+        div
+          if ayes > noes
+            span.label.label-primary Passed
+          else
+            span.label.label-danger Failed
+        div
+          br
+          span.label.label-primary Yes
+          span.label= ayes
+          span.label.label-important No
+          span.label= noes
+        div
+          br
+          span.label.label-inverse Majority
+          span.label= difference
+      else if divided
+        span Vote has not taken place yet.
+      else
+        span= result
+
+  section.meta
+    .title Mentions
+    .body
+      each v, k in mentionedAmendments
+        a(href='#') Sheet #{k}
+        .markdown(style='font-size:0.8em')!= v.html
+
+  section.meta.speakers
+    hr
+    .title Speakers
+    .body
+      ul.speakers
+        each s, id in speakers
+          li.speaker
+            .crop: img(src=s.speakerImage)
+            span= s.speakerName
+
+  section.meta.top-highlights
+    hr
+    .title Top Highlights
+    .body
+      .highlight
+        p: span We have stated all along that we believe that, in being part of this process, there should be an equivalence between the social and economic outcomes for the 2.1 or 2.2 million people who live in the Basin and the environmental outcomes and there should not be superiority of one over the other—and certainly not superiority of the environment over the people this parliament is here to represent.
+        .meta
+          .author
+            img(src='http://parlinfo.aph.gov.au/parlInfo/download/handbook/allmps/e5d/upload_ref_binary/e5d.jpg')
+            span Joyce, Sen Barnaby
+          .count.pull-right
+            span.fui-star-2
+            | &nbsp;21
+
+  section.debate
+    hr
+    each speech in json.speeches
+      .speech
+        //a.js-see-more.btn.btn-mini.btn-primary(href='javascript:void;') see more
+        .info
+          .time= moment(speech.date).format('LT')
+          .electorate= speech.electorate
+          .party: span(class=speech.party)= speech.party
+        .body
+          .photo: img(src=speech.speakerImage)
+          .speaker
+            span.name: a(href='#')= speech.speakerName
+            span.ministerial-titles= speech.ministerialTitles
+          != speech.content
+          //pre= JSON.stringify(speech, null, 2)
+          .comments
+            .add-comment
+              .control-group.small
+                .btn.btn-mini.btn-embossed.mrm +1
+                .btn.btn-mini.btn-embossed.mrm: i.fui-twitter
+                input.span6(type='text', placeholder='Add a comment...')
+          //.comments
+            .comment-count
+              span 2 comments
+              span.icon.fui-triangle-down-small
+            .comment
+              .info
+                span.name Andrew Jackson
+                span.date 12:27
+                span.date Liberal Party NSW Member
+              .body Congratulations Bob Katter for this move but unfortunately this is an inadequate Bill. We the people of Australia do not want warnings that a product is canned in China. We want a government with the courage to say if a product can be made in Australia then any importer of this goodwill pay a tariff equal to the cost of Australian Labor.
+        //.hover-info
+          div
+            span.key: kbd h
+            span Highlight
+          div
+            span.key: kbd f
+            span False premise
+          div
+            span.key: kbd i
+            span Invalid conclusion
+          div
+            span.key: kbd x
+            span Remove annotation
+          div
+            span.key: kbd q
+            span Quote
+          div
+            span.key: kbd a
+            span Personal attack
+          div
+            span.key: kbd ↓
+            span Next sentence
+          div
+            span.key: kbd ↑
+            span Previous sentence
+      hr
+    if preamble
+      .speech
+        .info &nbsp;
+        .body!= preamble
+      hr
+    if divided
+      .speech
+        .info &nbsp;
+        .body!= result
+      hr
+
+    a(href='#') Debate in Parliament
+    div(style='display: inline-block') &nbsp;|&nbsp;
+    a(href='#') Source
+
+  section.meta
+    .title Party Summary
+    .body
+      //pre= JSON.stringify(locals.json.partySummary, null, 2)
+      unless locals.json.partySummary
+        p No party summary available.
+      else
+        table.table
+          thead
+            th Party
+            th Majority (#{(majorityVote === 1) ? 'aye' : 'no' })
+            th Minority (#{(majorityVote === 1) ? 'no' : 'aye' })
+            th Pairs
+            th Turnout
+          tbody
+            each stats, party in locals.json.partySummary
+              tr
+                td= party
+                td= stats.majority
+                td= stats.minority
+                td= stats.pairs
+                td #{(stats.turnoutPerc*100).toFixed(0) + '%'}
+            tr.info
+              td Total
+              td= majority
+              td= minority
+              td= pairs
+              td #{(turnoutPerc*100).toFixed(0) + '%'}
+
+  section.meta
+    .title Rebel Voters
+    .body
+      //pre= JSON.stringify(locals.json.rebelVoters, null, 2)
+      unless locals.json.rebelVoters.length
+        p No rebel voters.
+      else
+        table.table
+          thead
+            th Name
+            th Constituency
+            th Party
+            th Vote
+          tbody
+            for voter in locals.json.rebelVoters
+              tr
+                td= voter.name
+                td= voter.constituency
+                td= voter.party
+                td #{(voter.vote === 1) ? 'aye' : 'no' }
+

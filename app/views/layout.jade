@@ -9,13 +9,14 @@ html
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js')
     script(src='/socket.io/socket.io.js')
     != js('application.js')
-    != css('style.css')
+    != css('style-less.css')
   body
     block main
+  script var shared = !{JSON.stringify(shared)};
   .bottom-menu
     .container: .row
       .span3.brand
-        a(href='#'): +logo
+        a(href='#'): +logo(title)
       .span7
         ul.bottom-links
           li: a(href="#") About Us

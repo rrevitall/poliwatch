@@ -2,7 +2,7 @@ NODE_PATH := NODE_PATH='lib:app'
 
 run:
 
-	$(NODE_PATH) nodemon --watch app --watch lib app.js
+	$(NODE_PATH) nodemon --watch app --watch lib app.coffee
 
 debug:
 

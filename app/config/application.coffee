@@ -1,5 +1,6 @@
-{Live} = require 'framework'
+{Live} = require 'live'
 config = require('config')()
+path = require 'path'
 
 class @App extends Live.Application
 
@@ -12,11 +13,10 @@ class @App extends Live.Application
 
     # Live Assets
     assets = @enable Live.Assets, ->
-      # Enable if using Flat UI from designmodo.
-      # Free.
-      #env.appendPath path.join process.cwd(), 'node_modules/Flat-UI'
-      # Pro.
-      #env.appendPath path.join process.cwd(), 'node_modules/flat-ui-pro'
+      @env.appendPath path.join process.cwd(), 'node_modules/flat-ui-pro/lib'
+      @env.appendPath path.join process.cwd(), 'node_modules/op-tools'
+      @env.registerEngine '.ts', require('helpers/TypeScriptEngine')
+      @opts.files.push 'style-less.css'
 
     # Connect logging
     # ---------------
@@ -38,7 +38,7 @@ class @App extends Live.Application
     @enable Live.PassportAuth.Routes
 
     @app.on 'server:listening', (server) =>
-      SocketsManager = require 'framework/sockets/socketsManager'
+      SocketsManager = require 'live/sockets/socketsManager'
       new SocketsManager server, @sessionStore,
         onConnection: (socket) ->
           SocketsConnection = require 'sockets/socketsConnection'

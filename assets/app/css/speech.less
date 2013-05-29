@@ -1,0 +1,119 @@
+.speech-body {
+  //p:hover > span {
+  p > span:hover {
+    background-color: #fffcef;
+    border-bottom: 1px dotted #fc0;
+    cursor: default;
+  }
+
+  .interjecting {
+    font-style: italic;
+    color: #aaa;
+    a {
+      color: #aaa;
+    }
+    &.member {
+
+    }
+    &.general {
+
+    }
+    &.office {
+      border-top: 1px solid #eee;
+      padding-top: 1.8em;
+      margin-top: 1em;
+    }
+  }
+  .continuation {
+  }
+  .HPS-Small {
+    font-style: italic;
+    font-size: 85%;
+  }
+  .HPS-MemberInterjecting {
+  }
+  .HPS-MemberIInterjecting {
+  }
+  .HPS-MemberContinuation,  {
+  }
+  .HPS-GeneralIInterjecting {
+  }
+  .HPS-OfficeInterjecting {
+  }
+  .HPS-GeneralBold {
+    font-weight: bold;
+  }
+  .HPS-DivisionFooter {
+    .interjecting;
+  }
+  .HPS-DivisionPreamble {
+    .interjecting;
+  }
+
+  .italic {
+    font-style: italic;
+  }
+  .photo {
+    float: left;
+    width: 67px;
+    max-height: 100px;
+    margin: 0px 16px 4px 2px;
+    > img {
+      border: 2px solid #bbb;
+    }
+  }
+  p {
+    font-size: 1.0em
+  }
+
+
+  .speaker {
+    margin-bottom: 1em;
+    .name {
+      font-weight: 300;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .ministerial-titles {
+      margin-left: 0.8em;
+      color: #666;
+    }
+  }
+
+}
+
+
+// Info
+
+.speech-info {
+  text-align: right;
+  font-size: 85%;
+  .electorate {
+    margin-top: 1em;
+  }
+  .party {
+    margin-top: 1em;
+    color: white;
+    > span {
+      padding: 1px 4px;
+      &.ALP {
+        background-color: lighten(#F00011, 30%);
+      }
+      &.Nats {
+        background-color: lighten(#0000FF, 30%);
+      }
+      &.LP {
+        background-color: lighten(#080CAB, 30%);
+      }
+      &.AG {
+        background-color: fade(green, 30%);
+      }
+      &.Ind\. {
+        background-color: fade(gray, 30%);
+      }
+      &.DLP {
+        background-color: fade(black, 30%);
+      }
+    }
+  }
+}

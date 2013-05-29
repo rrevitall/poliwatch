@@ -25,7 +25,9 @@ module.exports = (env) ->
       log4js.setGlobalLogLevel 'TRACE'
       log4js.configure
         appenders: DefaultLogging.developmentAppender
-        levels: _.extend DefaultLogging.devLevels, {} # TODO: Add new levels here.
+        levels: _.extend DefaultLogging.devLevels,
+          Assets: 'DEBUG'
+          'Assets:Mincer': 'OFF'
 
     when 'test'
       log4js.setGlobalLogLevel 'WARN'

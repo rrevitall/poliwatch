@@ -3,3 +3,6 @@
 
 # Install vendor assets with Bower.
 ./node_modules/bower/bin/bower install
+
+# Manually list dependencies here.
+./node_modules/tsd/deploy/tsd install express

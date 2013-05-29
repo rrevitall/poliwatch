@@ -1,0 +1,23 @@
+h2 Divisions
+.content
+  //- [table]
+  table.table.table-striped
+    thead: tr
+      th House
+      th Date
+      th Subject
+      th Turnout
+      th Majority
+    tbody
+      //- [row]
+      //pre= JSON.stringify(locals,null,2)
+      tr
+        td= locals.house
+        td= locals.date
+        td: a(href='division/#{id}')= locals.minorTitle
+        td= locals.turnoutPerc
+        td= locals.difference
+
+    .pagination: ul
+      li: a.js-prev.fui-arrow-left
+      li: a.js-next.fui-arrow-right

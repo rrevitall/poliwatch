@@ -1,6 +1,6 @@
 module.exports = (config) ->
-  appName: 'expressbootstrap' # TODO
-  appPrettyName: 'Live Bootstrap'
+  appName: 'poliwatch' # TODO
+  appPrettyName: 'Poliwatch'
   port: 3030
   # TODO: Change this to the url where your site is hosted in production.
   #   See `environments/production` for usage.
