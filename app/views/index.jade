@@ -1,11 +1,12 @@
 extend layout
 block main
-  .navbar.homepage-navbar
+  .navbar.navbar-fixed-top.homepage-navbar
     .navbar-inner
       .container: .row
         .brand: a(href='#'): +logo(title)
         ul.nav
           li: a(href='app/divisions') Divisions
+          li: a(href='app/bills') Bills
           li: a(href='app/mps') MPs
           li: a(href='app/senators') Senators
           li: a(href='app/policies') Policies
@@ -16,4 +17,3 @@ block main
       br
       h1 See how your representitives vote
       .lead Vote vote vote
-

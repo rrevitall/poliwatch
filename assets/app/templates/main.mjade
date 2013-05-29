@@ -1,1 +1,32 @@
-.content
+#nav
+
+  //- [nav]
+  .navbar.homepage-navbar
+    .navbar-inner
+      .container: .row: .span12
+        .brand: a(href='#')= app.title
+        ul.nav
+          li: a(href='divisions') Divisions
+          li: a(href='mps') MPs
+          li: a(href='senators') Senators
+          li: a(href='policies') Policies
+          li: a(href='help') Help / FAQ
+
+.container: #content
+
+#footer
+
+  //- [footer]
+  .bottom-menu
+    .container: .row
+      .span3.brand
+        a(href='#')= app.title
+      .span7
+        ul.bottom-links
+          li: a(href="#") About Us
+          li: a(href="#") Privacy
+          li: a(href="#") Follow Us
+      .span2
+        ul.bottom-icons
+          li: a.fui-facebook(href='#')
+          li: a.fui-twitter(href='#')

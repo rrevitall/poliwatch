@@ -16,9 +16,8 @@ require = -> readFileSync: -> ''
 window.BM = Backbone.Marionette
 window.B = Backbone
 
-$(document).ready ->
-  # Client-side template functions are accessible as follows:
-  # `JST['templates/home']()`
+window.App = new BM.Application
+App.addInitializer (opts) ->
 
   # Enable Socket.IO.
   window.socket = io.connect()
@@ -33,21 +32,32 @@ $(document).ready ->
     models: {}
     views: {}
     mixins: {}
+    routers: {}
+    title: 'Poliwatch'
 
   $('body').on 'click', 'a', (e) ->
-    router.navigate $(this).attr('href'), trigger: true
+    app.routers.router.navigate $(this).attr('href'), trigger: true
     return false
 
-  app.views.main = new MainLayout
-  app.views.main.render()
+  # Initialize views.
+  app.views.main = main = new MainLayout
+  app.views.nav = nav = new NavView
+  app.views.footer = footer = new FooterView
+  main.render()
+  main.nav.show nav
+  main.footer.show footer
 
-  router = new Router
+  # Start router.
+  app.routers.router = new Router
   B.history.start pushState: true, root: '/app/'
+
+$(document).ready ->
+  App.start()
 
 class Router extends B.Router
 
   routes:
-    'home': 'home'
+    'home': ''
     'divisions': 'divisions'
     'division/:id': 'division'
     'mps': 'mps'
@@ -55,6 +65,7 @@ class Router extends B.Router
     'policies': 'policies'
 
   home: =>
+    console.log 'home'
 
   divisions: =>
     page = new DivisionsPage
@@ -72,6 +83,12 @@ class Router extends B.Router
   senators: =>
 
   policies: =>
+
+class NavView extends BM.ItemView
+  template: JST['main/nav']
+
+class FooterView extends BM.ItemView
+  template: JST['main/footer']
 
 class DivisionsPage extends BM.Layout
   template: JST['divisions']
@@ -101,7 +118,9 @@ class MainLayout extends BM.Layout
   el: '#main'
   template: JST['main']
   regions:
-    content: '.content'
+    nav: '#nav'
+    content: '#content'
+    footer: '#footer'
 
 class DivisionModel extends B.Model
   urlRoot: '/divisions'
