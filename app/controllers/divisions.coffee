@@ -25,7 +25,7 @@ class @Divisions
 
     parseSpeeches model.json.speeches
 
-    speakers = extractSpeakers model.json.speeches
+    {firstSpeaker, speakers} = extractSpeakers model.json.speeches
 
     splitSpeechBodiesIntoSpans model.json.speeches
 
@@ -51,9 +51,10 @@ parseSpeeches = (speeches) ->
 
 extractSpeakers = (speeches) ->
   speakers = {}
+  firstSpeaker = speeches[0]
   for s in speeches
     speakers[s.speakerId] = s
-  speakers
+  {firstSpeaker, speakers}
 
 splitSpeechBodiesIntoSpans = (speeches) ->
   for s in speeches

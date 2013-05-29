@@ -104,7 +104,7 @@
                 .btn.btn-mini.btn-embossed.mrm +1
                 .btn.btn-mini.btn-embossed.mrm: i.fui-twitter
                 input.span6(type='text', placeholder='Add a comment...')
-          //.comments
+          .comments
             .comment-count
               span 2 comments
               span.icon.fui-triangle-down-small
@@ -205,3 +205,12 @@
                 td= voter.party
                 td #{(voter.vote === 1) ? 'aye' : 'no' }
 
+  section.meta
+    .title Your Vote
+    .body
+      p You were not able to vote in this division.
+      br
+      p How would you have voted if you could?
+      .btn.btn-success Aye
+      .btn.btn-danger.mlm No
+  br
