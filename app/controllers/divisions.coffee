@@ -96,6 +96,7 @@ indexSheetsOfProposedAmendments = (bills) ->
 cleanAndRenderAmendment = (md) ->
   # Remove everything before first heading.
   # TODO: This should be moved into voting-record.
+  return null unless md?
   html = marked md
   $ = cheerio.load html
   $("o\\:p").remove()

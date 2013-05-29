@@ -13,9 +13,11 @@ h2 Divisions
       //pre= JSON.stringify(locals,null,2)
       tr
         td= locals.house
-        td= locals.date
-        td: a(href='division/#{id}')= locals.minorTitle
-        td= locals.turnoutPerc
+        td= moment(locals.date).format('lll')
+        td
+          a(href='division/#{id}')= locals.minorTitle
+          div Sheets
+        td= $.percentage(locals.turnoutPerc)
         td= locals.difference
 
     .pagination: ul

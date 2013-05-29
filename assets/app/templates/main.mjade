@@ -7,6 +7,7 @@
         .brand: a(href='#')= app.title
         ul.nav
           li: a(href='divisions') Divisions
+          li: a(href='bills') Bills
           li: a(href='mps') MPs
           li: a(href='senators') Senators
           li: a(href='policies') Policies

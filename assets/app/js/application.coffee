@@ -16,6 +16,9 @@ require = -> readFileSync: -> ''
 window.BM = Backbone.Marionette
 window.B = Backbone
 
+jQuery.extend
+  percentage: (a) -> Math.round(a * 100).toFixed(0) + '%'
+
 window.App = new BM.Application
 App.addInitializer (opts) ->
 
