@@ -1,0 +1,6 @@
+deployment:
+  production:
+    branch: master
+    commands:
+      - git push git@heroku.com:poliwatch.git $CIRCLE_SHA1:refs/heads/master
+      #- heroku run rake db:migrate --app foo-bar-123
