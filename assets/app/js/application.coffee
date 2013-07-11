@@ -55,7 +55,8 @@ App.addInitializer (opts) ->
   B.history.start pushState: true, root: '/app/'
 
 $(document).ready ->
-  App.start()
+  unless window.location.pathname is '/'
+    App.start()
 
 class Router extends B.Router
 

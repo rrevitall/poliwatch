@@ -43,12 +43,12 @@ module.exports = (config) ->
 
   sequelizePostgres:
     development:
-      name: 'expressbootstrap'
+      name: 'poliwatch_development'
       dialect: 'postgres'
       username: 'postgres'
       password: null
     test:
-      name: 'expressbootstrap-test'
+      name: 'poliwatch_test'
       dialect: 'postgres'
       username: 'postgres'
       password: null
